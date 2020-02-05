@@ -27,7 +27,7 @@ e_id = args[0]
         res.Owner.Username = owner.Username
         res.Owner.Company = owner.Company
         jsonAsBytes, _ := json.Marshal(res)           //convert to array of bytes
-        err = stub.PutState(args[0], jsonAsBytes)     //rewrite the marble with id as key
+        err = stub.PutState(args[0], jsonAsBytes)     // 4AEE18F83AFDEB23
         if err != nil {
             return shim.Error(err.Error())
         }
