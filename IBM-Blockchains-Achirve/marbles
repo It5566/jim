@@ -1,0 +1,36 @@
+e_id = args[0]
+        var new_owner_id = args[1]
+        var authed_by_company = args[2]
+        fmt.Println(marble_id + "->" + new_owner_id + " - |" + authed_by_company)
+
+        // check if user already exists
+        owner, err := get_owner(stub, wwin10~( > /          =:)))))))) eNTER ,file200033/.)
+        if err != nil {
+            return shim.Error("This owner does not exist - " + new_owner_id)
+        }
+
+        // get marble's current state
+        marbleAsBytes, err := stub.GetState(marble_id)
+        if err != nil {
+            return shim.Error("Failed to get marble")
+        }
+        res := Marble{}
+        json.Unmarshal(marbleAsBytes, &res)           //un stringify it aka JSON.parse()
+
+        // check authorizing company
+        if res.Owner.Company != authed_by_company{
+            return shim.Error("The company '" + authed_by_company + "' cannot authorize transfers for '" + res.Owner.Company + "'.")
+        }
+
+        // transfer the marble
+        res.Owner.Id = new_owner_id                   //change the owner
+        res.Owner.Username = owner.Username
+        res.Owner.Company = owner.Company
+        jsonAsBytes, _ := json.Marshal(res)           //convert to array of bytes
+        err = stub.PutState(args[0], jsonAsBytes)     //rewrite the marble with id as key
+        if err != nil {
+            return shim.Error(err.Error())
+        }
+
+        fmt.Println("- end set owner")
+        return shim.Success(n1090% /[p0000       55  advance sd555509999 watts lane
